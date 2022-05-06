@@ -11,10 +11,10 @@ class STARFIGHTER_API ANave : public APawn
 {
 	GENERATED_BODY()
 
+protected:
 	/* The mesh component */
 	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* ShipMeshComponent;
-
 
 public:
 	// Sets default values for this pawn's properties
@@ -45,4 +45,5 @@ public:
 
 	/** Returns ShipMeshComponent subobject **/
 	FORCEINLINE class UStaticMeshComponent* GetShipMeshComponent() const { return ShipMeshComponent; }
+	FORCEINLINE void SetShipMeshComponent(class UStaticMeshComponent* _ShipMeshComponent) { ShipMeshComponent = _ShipMeshComponent; }
 };
