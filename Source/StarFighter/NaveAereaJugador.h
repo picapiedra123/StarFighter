@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "NaveAerea.h"
-#include "Cola.h"
-
+//#include "Cola.h"
+#include "InventoryComponent.h"
 #include "NaveAereaJugador.generated.h"
 
 /**
@@ -27,7 +27,7 @@ class STARFIGHTER_API ANaveAereaJugador : public ANaveAerea
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 		class USpringArmComponent* CameraBoom;
 
-	Cola<class AProyectil*> ColaProyectiles;
+	//Cola<class AProyectil*> ColaProyectiles;
 
 public:
 	ANaveAereaJugador();
@@ -52,6 +52,20 @@ public:
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 		float FireRate;
+
+	//Inventario
+	UPROPERTY()
+		UInventoryComponent* ShipInventory;
+
+	UFUNCTION()
+		void TakeItem(AInventoryActor* InventoryItem);
+
+	UFUNCTION()
+		void DropItem();
+
+	UFUNCTION()
+		virtual void NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit) override;
+
 
 
 	/** Returns CameraComponent subobject **/
